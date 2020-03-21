@@ -31,13 +31,13 @@ export class LazyLoadingComponent implements OnInit {
   reloadItems(payload) {
     const params = {
       q: 'angular',
-      page: payload.page,
+      page: payload.page + 1,
       per_page: payload.size
     };
     this.easportService.getItems(params).subscribe(value => {
       this.items = value.items;
       this.totalItems = value.total_count;
-      this.totalPages = Math.floor(value.total_count / this.size);
+      this.totalPages = 100;
     });
   }
 

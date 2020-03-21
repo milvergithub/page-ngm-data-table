@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
     "bootstrap": "4.1.1",
-    "ngm-data-table": "file:../ngm-libraries/dist/ngm-data-table",
+    "ngm-data-table": "^1.0.1",
     "ngx-bootstrap": "^5.5.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
