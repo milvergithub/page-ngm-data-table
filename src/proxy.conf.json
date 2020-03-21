@@ -1,0 +1,7 @@
+{
+  "/*": {
+    "target": "https://www.easports.com/fifa/ultimate-team/api/fut/item",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

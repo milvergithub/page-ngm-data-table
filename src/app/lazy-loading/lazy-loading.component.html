@@ -1,0 +1,94 @@
+<div class="container container-fluid">
+  <br>
+  <div class="bootstrap-checkbox">
+    <input id="multiExpandableRows" type="checkbox" [(ngModel)]="column.multiExpandableRows"/>
+    <label for="multiExpandableRows">Multi Expandable Rows</label>
+  </div>
+  <hr>
+  <div class="bootstrap-checkbox">
+    <input id="providerType" type="checkbox" [(ngModel)]="column.providerType"/>
+    <label for="providerType">Branch</label>
+  </div>
+  <div class="bootstrap-checkbox">
+    <input id="applicationType" type="checkbox" [(ngModel)]="column.applicationType"/>
+    <label for="applicationType">Watchers</label>
+  </div>
+  <hr>
+  <ngm-data-table [indexColumn]="column.indexColumn"
+                  [selectColumn]="column.selectColumn"
+                  [items]="items"
+                  [totalPages]="totalPages"
+                  [totalItems]="totalItems"
+                  [size]="size"
+                  [indexColumnHeader]="'#'"
+                  [multiExpandableRows]="column.multiExpandableRows"
+                  [classTable]="''"
+                  (reload)="reloadItems($event)"
+                  [expandableRows]="true"
+                  (rowClick)="rowClick($event)"
+                  (rowDoubleClick)="rowDoubleClick($event)"
+                  [rowTooltip]="rowTooltip">
+    <ng-template #iconExpand let-expanded="expanded">
+      <span class="fa fa-lg fa-plus-circle text-info" *ngIf="!expanded"></span>
+      <span class="fa fa-lg fa-minus-circle text-warning" *ngIf="expanded"></span>
+    </ng-template>
+    <ngm-data-table-column
+      [property]="'owner'"
+      [header]="'Profile'"
+      [sortable]="false"
+      [visible]="true">
+      <ng-template #dataTableCell let-item="item">
+        <img src="{{ item.owner.avatar_url }}" width="50" class="rounded-circle">
+      </ng-template>
+    </ngm-data-table-column>
+    <ngm-data-table-column
+      [property]="'owner'"
+      [header]="'Owner'"
+      [sortable]="false"
+      [visible]="true">
+      <ng-template #dataTableCell let-item="item">
+        {{ item.owner.login }}
+      </ng-template>
+    </ngm-data-table-column>
+    <ngm-data-table-column
+      [property]="'full_name'"
+      [header]="'Full Name'"
+      [breakpoints]="'xxs,xs'"
+      [sortable]="false">
+    </ngm-data-table-column>
+    <ngm-data-table-column
+      [property]="'created_at'"
+      [header]="'Created At'"
+      [breakpoints]="'xxs,xs,sm'"
+      [sortable]="true"
+      [visible]="true">
+    </ngm-data-table-column>
+    <ngm-data-table-column
+      [property]="'updated_at'"
+      [header]="'Updated At'"
+      [breakpoints]="'xxs,xs,sm,md'"
+      [sortable]="false">
+    </ngm-data-table-column>
+    <ngm-data-table-column
+      [property]="'stargazers_count'"
+      [header]="'Stargazers'"
+      [sortable]="true"
+      [resizable]="true"
+      [visible]="true">
+    </ngm-data-table-column>
+    <ngm-data-table-column
+      [property]="'watchers_count'"
+      [header]="'Watchers'"
+      [breakpoints]="'xxs,xs,sm,md'"
+      [sortable]="true"
+      [visible]="column.applicationType">
+    </ngm-data-table-column>
+    <ngm-data-table-column
+      [property]="'default_branch'"
+      [header]="'Branch'"
+      [breakpoints]="'xxs,xs,sm,md,lgs'"
+      [sortable]="true"
+      [visible]="column.providerType">
+    </ngm-data-table-column>
+  </ngm-data-table>
+</div>
