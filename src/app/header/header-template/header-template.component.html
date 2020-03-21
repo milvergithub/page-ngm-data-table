@@ -1,24 +1,10 @@
 <div class="container container-fluid">
-  <br>
-  <div class="bootstrap-checkbox">
-    <input id="multiExpandableRows" type="checkbox" [(ngModel)]="column.multiExpandableRows"/>
-    <label for="multiExpandableRows">Multi Expandable Rows</label>
-    <div class="float-right">
-      Download
-      <a href="https://github.com/milvergithub/page-ngm-data-table" class="btn btn-default"><span class="fa fa-3x fa-github"></span></a>
-    </div>
+  <div class="float-right">
+    Download
+    <a href="https://github.com/milvergithub/page-ngm-data-table" class="btn btn-default"><span class="fa fa-3x fa-github"></span></a>
   </div>
   <hr>
-  <div class="bootstrap-checkbox">
-    <input id="providerType" type="checkbox" [(ngModel)]="column.providerType"/>
-    <label for="providerType">Branch</label>
-  </div>
-  <div class="bootstrap-checkbox">
-    <input id="applicationType" type="checkbox" [(ngModel)]="column.applicationType"/>
-    <label for="applicationType">Watchers</label>
-  </div>
-  <hr>
-  <div [ngBusy]="busy">
+  <div>
     <ngm-data-table [indexColumn]="column.indexColumn"
                     [selectColumn]="column.selectColumn"
                     [items]="items"
@@ -37,19 +23,14 @@
         <span class="fa fa-lg fa-plus-circle text-info" *ngIf="!expanded"></span>
         <span class="fa fa-lg fa-minus-circle text-warning" *ngIf="expanded"></span>
       </ng-template>
-      <ng-template #dataTableExpand let-itemExpand="itemExpand">
-        <p class="text-warning" *ngIf="itemExpand.full_name != null">Full Name : {{itemExpand.full_name}}</p>
-        <p *ngIf="itemExpand.created_at != null">Created At : <span class="badge badge-dark">{{itemExpand.created_at}}</span></p>
-        <p *ngIf="itemExpand.updated_at != null">Updated At : <span class="badge badge-danger">{{itemExpand.updated_at}}</span></p>
-        <p *ngIf="itemExpand.stargazers_count != null">Stargazers: {{itemExpand.stargazers_count}}</p>
-        <p class="text-info" *ngIf="itemExpand.watchers_count != null">Watchers : <span class="badge badge-dark">{{itemExpand.watchers_count}}</span></p>
-        <p *ngIf="itemExpand.default_branch != null">Branch : <span class="badge badge-success">{{itemExpand.default_branch}}</span></p>
-      </ng-template>
       <ngm-data-table-column
         [property]="'owner'"
         [header]="'Profile'"
         [sortable]="false"
         [visible]="true">
+        <ng-template #dataTableHeader let-item="item">
+          <span style="color: rgb(1,123,169)">Profile</span>
+        </ng-template>
         <ng-template #dataTableCell let-item="item">
           <img src="{{ item.owner.avatar_url }}" width="25" class="rounded-circle">
         </ng-template>
@@ -60,7 +41,7 @@
         [sortable]="false"
         [visible]="true">
         <ng-template #dataTableCell let-item="item">
-          <span class="badge badge-light">{{item.owner.login}}</span>
+          {{ item.owner.login }}
         </ng-template>
       </ngm-data-table-column>
       <ngm-data-table-column
@@ -68,6 +49,9 @@
         [header]="'Full Name'"
         [breakpoints]="'xxs,xs'"
         [sortable]="false">
+        <ng-template #dataTableHeader let-item="item">
+          <span style="color: rgb(169,129,13); font-size: large">Full Name</span>
+        </ng-template>
       </ngm-data-table-column>
       <ngm-data-table-column
         [property]="'created_at'"
@@ -88,20 +72,6 @@
         [sortable]="true"
         [resizable]="true"
         [visible]="true">
-      </ngm-data-table-column>
-      <ngm-data-table-column
-        [property]="'watchers_count'"
-        [header]="'Watchers'"
-        [breakpoints]="'xxs,xs,sm,md'"
-        [sortable]="true"
-        [visible]="column.applicationType">
-      </ngm-data-table-column>
-      <ngm-data-table-column
-        [property]="'default_branch'"
-        [header]="'Branch'"
-        [breakpoints]="'xxs,xs,sm,md,lgs'"
-        [sortable]="true"
-        [visible]="column.providerType">
       </ngm-data-table-column>
     </ngm-data-table>
   </div>

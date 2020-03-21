@@ -1,2 +1,33 @@
-<app-lazy-loading></app-lazy-loading>
-<router-outlet></router-outlet>
+<div class="d-flex flex-row mt-2">
+  <ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" role="navigation">
+    <li class="nav-item">
+      <a href="#simple" class="nav-link" data-toggle="tab" role="tab" aria-controls="lorem">simple</a>
+    </li>
+    <li class="nav-item">
+      <a href="#header/header-template" class="nav-link" data-toggle="tab" role="tab" aria-controls="dolor">header template</a>
+    </li>
+    <li class="nav-item">
+      <a href="#header/header-template-extra" class="nav-link" data-toggle="tab" role="tab" aria-controls="ipsum">header  template extra</a>
+    </li>
+    <li class="nav-item">
+      <a href="#cell/cell-template" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">template column</a>
+    </li>
+    <li class="nav-item">
+      <a href="#responsive/default" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">responsive</a>
+    </li>
+    <li class="nav-item">
+      <a href="#responsive/template" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">responsive template</a>
+    </li>
+    <li class="nav-item">
+      <a href="#responsive/custom-icon-expand" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">responsive template <br> icon expand</a>
+    </li>
+    <li class="nav-item">
+      <a href="#responsive/lazy-loading" class="nav-link" data-toggle="tab" role="tab" aria-controls="sit-amet">Lazy loadingd</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="lorem" role="tabpanel">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@
     <label for="applicationType">Watchers</label>
   </div>
   <hr>
-  <div [ngBusy]="busy">
+  <div>
     <ngm-data-table [indexColumn]="column.indexColumn"
                     [selectColumn]="column.selectColumn"
                     [items]="items"
@@ -33,10 +33,6 @@
                     (rowClick)="rowClick($event)"
                     (rowDoubleClick)="rowDoubleClick($event)"
                     [rowTooltip]="rowTooltip">
-      <ng-template #iconExpand let-expanded="expanded">
-        <span class="fa fa-lg fa-plus-circle text-info" *ngIf="!expanded"></span>
-        <span class="fa fa-lg fa-minus-circle text-warning" *ngIf="expanded"></span>
-      </ng-template>
       <ng-template #dataTableExpand let-itemExpand="itemExpand">
         <p class="text-warning" *ngIf="itemExpand.full_name != null">Full Name : {{itemExpand.full_name}}</p>
         <p *ngIf="itemExpand.created_at != null">Created At : <span class="badge badge-dark">{{itemExpand.created_at}}</span></p>
@@ -45,6 +41,7 @@
         <p class="text-info" *ngIf="itemExpand.watchers_count != null">Watchers : <span class="badge badge-dark">{{itemExpand.watchers_count}}</span></p>
         <p *ngIf="itemExpand.default_branch != null">Branch : <span class="badge badge-success">{{itemExpand.default_branch}}</span></p>
       </ng-template>
+
       <ngm-data-table-column
         [property]="'owner'"
         [header]="'Profile'"
@@ -60,7 +57,7 @@
         [sortable]="false"
         [visible]="true">
         <ng-template #dataTableCell let-item="item">
-          <span class="badge badge-light">{{item.owner.login}}</span>
+          {{ item.owner.login }}
         </ng-template>
       </ngm-data-table-column>
       <ngm-data-table-column

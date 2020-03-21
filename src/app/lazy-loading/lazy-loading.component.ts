@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EasportService} from '../core/easport.service';
 import {Subscription} from 'rxjs';
+import {Utils} from '../core/utils';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-lazy-loading',
@@ -22,7 +24,8 @@ export class LazyLoadingComponent implements OnInit, OnDestroy {
   };
   public busy: Subscription;
 
-  constructor(private easportService: EasportService) {
+  constructor(private easportService: EasportService,
+              private toastr: ToastrService) {
   }
 
 
@@ -39,7 +42,10 @@ export class LazyLoadingComponent implements OnInit, OnDestroy {
       this.items = value.items;
       this.totalItems = value.total_count;
       this.totalPages = 100;
-    });
+    }, (error => {
+      console.log(Utils.extractError(error));
+      this.toastr.error(Utils.extractError(error), 'ERROR: ');
+    }));
   }
 
   // special properties:

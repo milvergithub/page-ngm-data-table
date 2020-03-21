@@ -9,11 +9,26 @@ import { LazyLoadingComponent } from './lazy-loading/lazy-loading.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgBusyModule } from 'ng-busy';
+import { TeamplateComponent } from './cell/teamplate/teamplate.component';
+import { HeaderExtraComponent } from './header/header-extra/header-extra.component';
+import { HeaderTemplateComponent } from './header/header-template/header-template.component';
+import { CustomIconExpandedComponent } from './responsive/custom-icon-expanded/custom-icon-expanded.component';
+import { DefaultComponent } from './responsive/default/default.component';
+import { TeamplateExpandComponent } from './responsive/teamplate-expand/teamplate-expand.component';
+import { SimpleComponent } from './simple/simple/simple.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LazyLoadingComponent
+    LazyLoadingComponent,
+    TeamplateComponent,
+    HeaderExtraComponent,
+    HeaderTemplateComponent,
+    CustomIconExpandedComponent,
+    DefaultComponent,
+    TeamplateExpandComponent,
+    SimpleComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +38,7 @@ import { NgBusyModule } from 'ng-busy';
     NgBusyModule,
     FormsModule,
     NgmDataTableModule.forRoot(),
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

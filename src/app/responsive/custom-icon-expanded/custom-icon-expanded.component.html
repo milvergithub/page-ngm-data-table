@@ -18,7 +18,7 @@
     <label for="applicationType">Watchers</label>
   </div>
   <hr>
-  <div [ngBusy]="busy">
+  <div>
     <ngm-data-table [indexColumn]="column.indexColumn"
                     [selectColumn]="column.selectColumn"
                     [items]="items"
@@ -88,6 +88,9 @@
         [sortable]="true"
         [resizable]="true"
         [visible]="true">
+        <ng-template #dataTableCell let-item="item">
+          <span class="badge badge-info">{{item.stargazers_count}}</span>
+        </ng-template>
       </ngm-data-table-column>
       <ngm-data-table-column
         [property]="'watchers_count'"
