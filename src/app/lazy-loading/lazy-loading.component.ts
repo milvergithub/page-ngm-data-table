@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EasportService} from '../core/easport.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-lazy-loading',
   templateUrl: './lazy-loading.component.html',
   styleUrls: ['./lazy-loading.component.scss']
 })
-export class LazyLoadingComponent implements OnInit {
+export class LazyLoadingComponent implements OnInit, OnDestroy {
 
   items = [];
   totalItems = 10;
@@ -19,7 +20,7 @@ export class LazyLoadingComponent implements OnInit {
     selectColumn: false,
     indexColumn: false
   };
-  index = 1;
+  public busy: Subscription;
 
   constructor(private easportService: EasportService) {
   }
@@ -34,7 +35,7 @@ export class LazyLoadingComponent implements OnInit {
       page: payload.page + 1,
       per_page: payload.size
     };
-    this.easportService.getItems(params).subscribe(value => {
+    this.busy = this.easportService.getItems(params).subscribe(value => {
       this.items = value.items;
       this.totalItems = value.total_count;
       this.totalPages = 100;
@@ -52,6 +53,12 @@ export class LazyLoadingComponent implements OnInit {
 
   rowTooltip(item) {
     return item.full_name;
+  }
+
+  ngOnDestroy(): void {
+    if (this.busy) {
+      this.busy.unsubscribe();
+    }
   }
 
 }

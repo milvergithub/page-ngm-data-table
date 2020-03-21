@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {NgmDataTableModule} from 'ngm-data-table';
+import { NgmDataTableModule } from 'ngm-data-table';
 import { LazyLoadingComponent } from './lazy-loading/lazy-loading.component';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgBusyModule } from 'ng-busy';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgBusyModule,
     FormsModule,
     NgmDataTableModule.forRoot(),
   ],
