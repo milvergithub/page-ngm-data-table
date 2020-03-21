@@ -19,7 +19,7 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "ng-busy": "^9.0.0",
     "ngm-data-table": "^1.0.1",
     "ngx-bootstrap": "^5.5.0",
