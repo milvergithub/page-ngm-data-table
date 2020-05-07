@@ -30,6 +30,24 @@ export class SimpleComponent implements OnInit {
 
 
   ngOnInit(): void {
+    const data = {
+      accountId: 'x1UgAbcYcCIEXz1y1Y7trg==',
+      authorizationId: 'gv2AkR44xmtseFXSHSNv9w=='
+    };
+
+    fetch('http://test.bnb.com.bo/ClientAuthentication.API/api/v1/auth/token', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      // tslint:disable-next-line:no-shadowed-variable
+      .then(data => console.log('Success:', data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   reloadItems(payload): void {
